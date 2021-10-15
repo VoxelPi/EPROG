@@ -11,7 +11,7 @@ int main()
     printf("Friends: ");
     scanf("%d", &n);
 
-    // Calculate money / friend
-    double y = x / n;
-    printf("Money / Friend: %lf\n", y);
+    // Calculate money / person
+    double y = x / (n + 1);
+    printf("Money / Person: %lf\n", y);
 }

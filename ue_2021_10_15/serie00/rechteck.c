@@ -13,6 +13,6 @@ int main()
     // Calculate area
     double A = a * b;
 
-    printf("Area: %lf\n", A);
+    printf("Area: %f\n", A);
     return 0;
 }
