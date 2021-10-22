@@ -1,17 +1,14 @@
 #include <stdio.h>
 
-void swap(double *a, double *b) {
-    double temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 // Bubble sort.
 void sort(double *array, unsigned int n) {
     for (int i_end = 0; i_end < (n - 1); ++i_end) {
         for (int i = 0; i < (n - 1 - i_end); ++i) {
             if (array[i] > array[i + 1]) {
-                swap(array + i, array + i + 1);
+                // Swap
+                double temp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = temp;
             }
         }
     }
