@@ -6,7 +6,7 @@ int main() {
     printf("n = ");
     scanf("%u", &n);
 
-    double a_n = 1.0 / (n + 2);
+    double a_n = (n % 2 ? -1.0 : 1.0) / (n + 2);
 
     printf("a_n = %f\n", a_n);
 
