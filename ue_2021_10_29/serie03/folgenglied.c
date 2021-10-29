@@ -3,11 +3,10 @@
 * Peter Smek, 27.10.2021
 */
 
-
 #include <stdio.h>
 
 double folgenglied(int n) {
-    return (n % 2 ? -1.0 : 1.0) / (n + 2);
+    return (1 - 2 * (n % 2)) / (double)(n + 2);
 }
 
 int main() {
