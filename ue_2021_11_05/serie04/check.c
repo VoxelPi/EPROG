@@ -3,21 +3,26 @@
  * Peter Smek, 29.10.2021
  */
 
+#include <assert.h>
 #include <stdio.h>
 
 /**
  * Returns 1 if the sequence x contains the sequence y otherwise 0.
  */
-int check(int x[6], int y[3]) {
-    // Loop over all possible starting positions of x.
+int check(int x[], int x_n, int y[], int y_n) {
+    // Assert that 0 <= y_n <= x_n
+    assert(y_n >= 0);
+    assert(x_n >= y_n);
+
+    // Loop over all possible starting positions in x.
     int i = 0;
-    while (i <= 6 - 3) {
+    while (i <= x_n - y_n) {
         // Assume sequences are equal.
         int equal = 1;
 
         // Loop over all elements of y.
         int j = 0;
-        while (j < 3) {
+        while (j < y_n) {
             // If x[i + j] is not y[j] set equal to 0 and break out of the inner loop.
             if (x[i + j] != y[j]) {
                 equal = 0;
@@ -62,7 +67,7 @@ int main() {
     }
     
     // Check if the sequence x contains the sequence y.
-    if (check(x, y)) {
+    if (check(x, 6, y, 3)) {
         printf("The sequence x contains the sequence y.\n");
     } else {
         printf("The sequence x doesn't contain the sequence y.\n");

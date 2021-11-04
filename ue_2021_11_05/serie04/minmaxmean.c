@@ -76,7 +76,7 @@ int main() {
 
 /*
 * Tests:
-* Test minmaxmean with different inputs.
-* Test minmaxmean with negative inputs.
 * Test minmaxmean with n!=3.
+* Test different inputs.
+* Test negative inputs.
 */

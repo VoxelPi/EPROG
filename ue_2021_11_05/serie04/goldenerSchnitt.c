@@ -57,5 +57,5 @@ int main() {
  * Tests:
  * Check that k is always > 0.
  * Check that k parameter of cauchy is always > 0.
- * Validate the output of cauchy(k).
+ * Validate the output of cauchy(k) by manually calculating and comparing b_n with b_(n-1).
  */ 

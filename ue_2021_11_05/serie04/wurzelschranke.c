@@ -14,7 +14,7 @@ int wurzelschranke(double x) {
 
     // Increment k until condition is met.
     int k = 0;
-    while (!(k*k <= x && x < (k+1)*(k+1))) {
+    while (x >= (k+1)*(k+1)) { //!(k*k <= x && x < (k+1)*(k+1))
         ++k;
     }
     
@@ -31,7 +31,7 @@ int main() {
     } while (x < 0);
 
     // Print result.
-    printf("n = %d\n", wurzelschranke(x));
+    printf("k = %d\n", wurzelschranke(x));
 
     return 0;
 }
@@ -40,5 +40,5 @@ int main() {
  * Tests:
  * Test that x in wurzelschranke is always >= 0.
  * Test that user input for x is always >= 0.
- * Validate results of wurzelschranke.
+ * Validate results of wurzelschranke by manually calculating value for a few values of x.
  */ 

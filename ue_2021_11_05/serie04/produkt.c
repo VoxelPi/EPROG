@@ -55,5 +55,5 @@ int main() {
 
 /*
  * Tested by entering various differnent valid and invalid numbers 
- * and checking if the outputed product is correct.
+ * and checking if the output product is correct.
  */
