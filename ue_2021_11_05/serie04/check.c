@@ -9,20 +9,16 @@
 /**
  * Returns 1 if the sequence x contains the sequence y otherwise 0.
  */
-int check(int x[], int x_n, int y[], int y_n) {
-    // Assert that 0 <= y_n <= x_n
-    assert(y_n >= 0);
-    assert(x_n >= y_n);
-
+int check(int x[], int y[]) {
     // Loop over all possible starting positions in x.
     int i = 0;
-    while (i <= x_n - y_n) {
+    while (i <= 6 - 3) {
         // Assume sequences are equal.
         int equal = 1;
 
         // Loop over all elements of y.
         int j = 0;
-        while (j < y_n) {
+        while (j < 3) {
             // If x[i + j] is not y[j] set equal to 0 and break out of the inner loop.
             if (x[i + j] != y[j]) {
                 equal = 0;
@@ -67,7 +63,7 @@ int main() {
     }
     
     // Check if the sequence x contains the sequence y.
-    if (check(x, 6, y, 3)) {
+    if (check(x, y)) {
         printf("The sequence x contains the sequence y.\n");
     } else {
         printf("The sequence x doesn't contain the sequence y.\n");
