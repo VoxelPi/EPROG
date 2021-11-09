@@ -7,29 +7,29 @@
 #include <math.h>
 #include <stdio.h>
 
+// 0 1 2 3 4 5  6  7
+// 1 1 2 3 5 8 13 21
+
 /**
- * Calculates the min value of n so that a_n+1/a_n - a_n/a_n-1 <= 1/k is.
+ * Calculates the min value of n so that |a_n+1/a_n - a_n/a_n-1| <= 1/k.
  */
 int cauchy(int k) {
     assert(k > 0);
 
+    int n = 1;
     int a = 1;
     int a_prev = 1;
+    double b = ((a + a_prev) / (double)a) - (a / (double)a_prev);
+    printf("%.35f <=? %.35f (%d)\n", fabs(b), 1.0/k, fabs(b) <= (1.0 / k));
 
-    int n = 1;
-    while (1) {
-        // Calculate b.
-        double b = ((a + a_prev) / (double)a) - (a / (double)a_prev);
-        
-        // Check if break condition is true.
-        if (fabs(b) <= (1.0 / k)) {
-            break;
-        }
-        
-        // Calculates new values for a and a_prev.
+    while (fabs(b) > (1.0 / k)) {
+        // Calculate new values for a, a_prev and b.
         int tmp = a;
         a += a_prev;
         a_prev = tmp;
+
+        b = ((a + a_prev) / (double)a) - (a / (double)a_prev);
+        printf("%.35f <=? %.35f (%d)\n", fabs(b), 1.0/k, fabs(b) <= (1.0 / k));
 
         // Increment n.
         ++n;
