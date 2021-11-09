@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "math.h": "c",
-        "assert.h": "c"
+        "assert.h": "c",
+        "stdint.h": "c",
+        "cstdint": "c"
     }
 }
