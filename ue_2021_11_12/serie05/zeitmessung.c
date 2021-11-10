@@ -37,11 +37,11 @@ double time_b(int N) {
 }
 
 int main() {
-    printf("   N   │     (a_n)²    │         b_n\n");
-    printf("━━━━━━━┿━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━\n");
+    printf("   N   │      (a_n)²     │          b_n\n");
+    printf("━━━━━━━┿━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━\n");
     int N = 1;
     for (int i = 0; i <= 5; ++i) {
-        printf("%7d│%15f│%15f\n", N, time_a2(N), time_b(N));
+        printf("%7d│%15fs │%15fs\n", N, time_a2(N), time_b(N));
         N *= 10;
     }
     return 0;
