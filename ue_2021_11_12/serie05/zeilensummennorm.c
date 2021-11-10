@@ -18,8 +18,9 @@ double zeilensummennorm(double A[], int m, int n) {
 
     // Calculate sum of first row.
     double max_sum = 0;
+    double A_0k = 0;
     for (int k = 0; k < n; ++k) {
-        double A_0k = A[0 + k * m];
+        A_0k = A[0 + k * m];
         if (A_0k >= 0) {
             max_sum += A_0k;
         } else {
@@ -30,8 +31,9 @@ double zeilensummennorm(double A[], int m, int n) {
     for (int j = 1; j < m; ++j) {
         // Calculate sum of jth row.
         int sum = 0;
+        double A_jk = 0;
         for (int k = 0; k < n; ++k) {
-            double A_jk = A[j + k * m];
+            A_jk = A[j + k * m];
             if (A_jk >= 0) {
                 sum += A_jk;
             } else {
