@@ -4,7 +4,6 @@
  */
 
 #include <assert.h>
-#include <math.h>
 #include <stdio.h>
 
 #define M 3
@@ -20,14 +19,24 @@ double zeilensummennorm(double A[], int m, int n) {
     // Calculate sum of first row.
     double max_sum = 0;
     for (int k = 0; k < n; ++k) {
-        max_sum += fabs(A[0 + k * m]);
+        double A_0k = A[0 + k * m];
+        if (A_0k >= 0) {
+            max_sum += A_0k;
+        } else {
+            max_sum -= A_0k;
+        }
     }
 
     for (int j = 1; j < m; ++j) {
         // Calculate sum of jth row.
         int sum = 0;
         for (int k = 0; k < n; ++k) {
-            sum += fabs(A[j + k * m]);
+            double A_jk = A[j + k * m];
+            if (A_jk >= 0) {
+                sum += A_jk;
+            } else {
+                sum -= A_jk;
+            }
         }
 
         // If sum > max_sum set max_sum to sum.
