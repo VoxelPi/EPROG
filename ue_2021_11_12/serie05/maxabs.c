@@ -9,6 +9,9 @@
 
 #define N 3
 
+/**
+ * Calculates the index of the first element with maximum absolute value.
+ */ 
 int maxabs(double x[], int n) {
     assert(n >= 0);
 

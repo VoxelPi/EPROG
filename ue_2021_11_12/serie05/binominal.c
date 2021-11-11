@@ -7,13 +7,14 @@
 #include <stdio.h>
 
 /**
- * Calculates the binominalcoefficient of (n k) using one loop.
+ * Calculates the binominal coefficient of (n k) using one loop.
  */ 
 int binominal(int n, int k) {
     assert(n >= 0);
     assert(k >= 0);
     assert(k < n);
 
+    // Calculate numerator and denumerator.
     int num = 1;
     int den = 1;
     for (int i = 0; i < k; ++i) {
@@ -21,27 +22,31 @@ int binominal(int n, int k) {
         den *= (i + 1);
     }
 
+    // Calculate binominal coefficient.
     return num / den;
 }
 
 /**
- * Calculates the binominalcoefficient of (n k) using two loops.
+ * Calculates the binominal coefficient of (n k) using two loops.
  */ 
 int binominal2(int n, int k) {
     assert(n >= 0);
     assert(k >= 0);
     assert(k < n);
 
+    // Calculate numerator.
     int num = 1;
     for (int i = n-k+1; i <= n; ++i) {
         num *= i;
     }
     
+    // Calculate denumerator.
     int den = 1;
     for (int i = 1; i <= k; ++i) {
         den *= i;
     }
 
+    // Calculate binominal coefficient.
     return num / den;
 }
 
