@@ -14,7 +14,7 @@ int issymmetric(double A[], int n) {
     // Loop over all rows.
     for (int j = 0; j < n; ++j) {
         // Loop over all columns.
-        for (int k = 0; k < n; ++k) {
+        for (int k = 0; k <= j; ++k) {
             // Return false if A_jk is not A_kj.
             if (A[j + k * n] != A[k + j * n]) {
                 return 0;

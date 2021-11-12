@@ -14,16 +14,14 @@ int binominal(int n, int k) {
     assert(k >= 0);
     assert(k < n);
 
-    // Calculate numerator and denumerator.
-    int num = 1;
-    int den = 1;
+    // Calculate binominal coefficient.
+    double binominal = 1;
     for (int i = 0; i < k; ++i) {
-        num *= (n - i);
-        den *= (i + 1);
+        binominal *= (n - i) / (double)(i + 1);
     }
 
-    // Calculate binominal coefficient.
-    return num / den;
+    // Return binominal coefficient as integer.
+    return (int)binominal;
 }
 
 /**

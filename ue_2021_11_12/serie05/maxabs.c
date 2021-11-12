@@ -46,7 +46,7 @@ int main() {
 
     // Calculate and print max abs of x.
     int j = maxabs(x, N);
-    printf("Max of x: x[j=%d] = %f\n", j, fabs(x[j]));
+    printf("Max of x: x[j=%d] = %f\n", j, x[j]);
 
     return 0;
 }
