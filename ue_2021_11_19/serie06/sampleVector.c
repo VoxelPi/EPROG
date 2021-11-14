@@ -10,15 +10,15 @@
 /**
  * Creates a vector containing every sth entry of x.
  */ 
-double* sampleVector(double x[], int n, int s) {
+double* sampleVector(double x[], int n, int s, int *v_s_n) {
     assert(s > 0);
     assert(n > 0);
 
     // Calculate size of sample vector.
-    int v_s_n = ((n - 1) / s) + 1;
+    *v_s_n = ((n - 1) / s) + 1;
 
     // Allocate memory for sample vector.
-    double *v_s = malloc(v_s_n * sizeof(double));
+    double *v_s = malloc(*v_s_n * sizeof(double));
     assert(v_s != NULL);
 
     // Fill sample vector.
@@ -61,15 +61,18 @@ int main() {
     } while (s < 1);
 
     // Get sample vector.
-    double *v_s = sampleVector(x, n, s);
+    int v_s_n = 0;
+    double *v_s = sampleVector(x, n, s, &v_s_n);
 
     // Print vector x.
     printf("Vector v_s = \n");
-    for (int i = 0; i < ((n - 1) / s) + 1; ++i) {
+    for (int i = 0; i < v_s_n; ++i) {
         printf("  v_s[%d] = %f\n", i, v_s[i]);
     }
 
     // Free allocated memory.
     free(x);
     free(v_s);
+
+    return 0;
 }

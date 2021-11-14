@@ -57,4 +57,6 @@ int main() {
 
     // Free allocated memory.
     free(x);
+
+    return 0;
 }
