@@ -70,21 +70,23 @@ int anagram(char *first_str, char* second_str) {
 /**
  * Gets a string from stdin.
  */
-void scan_str(char **str, int *len) {
-    // Add chars to string.
+char* scan_str(char *str, int *len) {
+    // Add character to string.
     char c = 0;
     while (scanf("%c", &c) == 1 && c != '\n') {
-        *str = realloc(*str, (*len + 1) * sizeof(char));
-        assert(*str != NULL);
-        (*str)[*len] = c;
+        str = realloc(str, (*len + 1) * sizeof(char));
+        assert(str != NULL);
+        str[*len] = c;
 
         ++*len;
     }
 
     // Add 0 string-terminator.
-    *str = realloc(*str, (*len + 1) * sizeof(char));
-    assert(*str != NULL);
-    (*str)[*len] = 0;
+    str = realloc(str, (*len + 1) * sizeof(char));
+    assert(str != NULL);
+    str[*len] = 0;
+
+    return str;
 }
 
 int main() {
@@ -93,11 +95,11 @@ int main() {
 
     // Get sring 1 from the user.
     printf("String 1: ");
-    scan_str(&str_1, &str_1_len);
+    str_1 = scan_str(str_1, &str_1_len);
 
     // Get sring 2 from the user.
     printf("String 2: ");
-    scan_str(&str_2, &str_2_len);
+    str_2 = scan_str(str_2, &str_2_len);
 
     // Print if string 1 is an anagram of string 2.
     if (anagram(str_1, str_2)) {

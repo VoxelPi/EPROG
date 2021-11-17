@@ -30,14 +30,14 @@ void selectionSort(double *x, int n) {
 /**
  * Filter and sort unique numbers from vector x.
  */
-void unique(double **x, int *n) {
+double* unique(double *x, int *n) {
     for (int i = 1; i < *n; ++i) {
         // Assume x[i] is unique.
         int unique = 1;
         // Check if the vector contains already a value x[j] = x[i] with j < i.
         for (int i_prev = 0; i_prev < i; ++i_prev) {
             // If duplicate is found set unique to 0 and break.
-            if ((*x)[i] == (*x)[i_prev]) {
+            if (x[i] == x[i_prev]) {
                 unique = 0;
                 break;
             }
@@ -46,7 +46,7 @@ void unique(double **x, int *n) {
         // if x[i] is not unique, shift all x[j] with j > i to x[j - 1].
         if (!unique) {
             for (int j = i; j < *n - 1; ++j) {
-                (*x)[j] = (*x)[j + 1];
+                x[j] = x[j + 1];
             }
             // Decrement size of vector x.
             --*n;
@@ -56,10 +56,12 @@ void unique(double **x, int *n) {
         }
     }
 
-    *x = realloc(*x, *n * sizeof(double));
+    x = realloc(x, *n * sizeof(double));
 
     // Sort the vector x.
-    selectionSort(*x, *n);
+    selectionSort(x, *n);
+
+    return x;
 }
 
 int main() {
@@ -85,7 +87,7 @@ int main() {
     }
 
     // Sort vector x.
-    unique(&x, &n);
+    x = unique(x, &n);
 
     // Print vector x.
     printf("Vector x = \n");

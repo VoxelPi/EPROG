@@ -10,16 +10,16 @@
 /**
  * Removes all elements x[j] with x[j] >= n.
  */ 
-void cut(double **x, int *x_n, int n) {
+double* cut(double *x, int *x_n, int n) {
     // Iterate over all elements of x.
     for (int j = 0; j < *x_n; ++j) {
 
         // Check if x[j] is >= n.
-        if ((*x)[j] >= n) {
+        if (x[j] >= n) {
 
             // Shift all x[i] with i > j to x[i - 1].
             for (int i = j; i < *x_n - 1; ++i) {
-                (*x)[i] = (*x)[i + 1];
+                x[i] = x[i + 1];
             }
 
             // Decrement array length.
@@ -27,10 +27,12 @@ void cut(double **x, int *x_n, int n) {
             --j;
 
             // Reallocate x.
-            *x = realloc(*x, (*x_n) * sizeof(double));
-            assert(!(*x_n > 0 && *x == NULL));
+            x = realloc(x, (*x_n) * sizeof(double));
+            assert(!(*x_n > 0 && x == NULL));
         }
     }
+
+    return x;
 }
 
 int main() {
@@ -62,7 +64,7 @@ int main() {
     } while (n < 0);
 
     // Cut vector x.
-    cut(&x, &x_n, n);
+    x = cut(x, &x_n, n);
 
     // Print vector x.
     printf("Vector x = \n");

@@ -8,17 +8,19 @@
 #include <stdlib.h>
 
 // Append vector y to vector x.
-void appendVector(double **x, int *n, double *y, int m) {
-    *x = realloc(*x, (*n + m) * sizeof(double));
+double* appendVector(double *x, int *n, double *y, int m) {
+    x = realloc(x, (*n + m) * sizeof(double));
     assert(x != NULL);
 
     // Copy y into x.
     for (int i = 0; i < m; ++i) {
-        (*x)[i + *n] = y[i];
+        x[i + *n] = y[i];
     }
 
     // Add length of y to length of x.
     *n += m;
+
+    return x;
 }
 
 int main() {
@@ -62,7 +64,7 @@ int main() {
     }
 
     // Sort vector x.
-    appendVector(&x, &n, y, m);
+    x = appendVector(x, &n, y, m);
 
     // Print vector x.
     printf("Vector x = \n");
