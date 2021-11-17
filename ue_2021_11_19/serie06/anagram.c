@@ -6,7 +6,18 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
+/**
+ * Returns the length of the string.
+ */ 
+int str_length(char *str) {
+    char *c = str;
+    while (*c != 0) {
+        ++c;
+    } 
+
+    return c - str;
+}
 
 /**
  * Converts the char c to lowercase.
@@ -25,10 +36,10 @@ char to_lowercase(char c) {
  * Checks if first_str is an anagram of second_str.
  */ 
 int anagram(char *first_str, char* second_str) {
-    int n = strlen(first_str);
+    int n = str_length(first_str);
 
-    // If the two strings don't have the same length, they cant be anagram.
-    if (n != strlen(second_str)) {
+    // If the two strings don't have the same length, then they can't be an anagram of each other.
+    if (n != str_length(second_str)) {
         return 0;
     }
 
