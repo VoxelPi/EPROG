@@ -11,12 +11,10 @@
  * Returns the length of the string.
  */ 
 int str_length(char *str) {
-    char *c = str;
-    while (*c != 0) {
-        ++c;
-    } 
-
-    return c - str;
+    int i = 0;
+    // Increment i until str[i] is the 0-terminator of the string.
+    for (i = 0; str[i] != '\0'; ++i) {}
+    return i;
 }
 
 /**
