@@ -69,10 +69,12 @@ int anagram(char *first_str, char* second_str) {
 
         // Return 0 if the remaining chars don't contain the ith char of string 2
         if (!contained) {
+            free(c_v);
             return 0;
         }
     }
 
+    free(c_v);
     return 1;
 }
 
