@@ -49,6 +49,12 @@ int main() {
         scanf("%lf", x + i);
     }
 
+    // Print vector x.
+    printf("Vector x = \n");
+    for (int i = 0; i < n; ++i) {
+        printf("  x[%d] = %f\n", i, x[i]);
+    }
+
     // Sort vector x.
     selectionSort(x, n);
 
