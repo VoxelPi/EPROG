@@ -57,6 +57,7 @@ double* unique(double *x, int *n) {
     }
 
     x = realloc(x, *n * sizeof(double));
+    assert(x != NULL);
 
     // Sort the vector x.
     selectionSort(x, *n);
