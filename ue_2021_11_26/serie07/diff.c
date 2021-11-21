@@ -46,7 +46,7 @@ double* diff(double (*fct)(double), double x, double h0, double tau, int *n) {
         // Calculate tolerance
         double tolerance = tau;
         if (fabs(phi_h_n) > tau) {
-            tolerance * fabs(phi_h_n);
+            tolerance *= fabs(phi_h_n);
         }
 
         // Check if |phi(h_n) - phi(h_(n+1))| <= tolerance
