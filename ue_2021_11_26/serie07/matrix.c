@@ -1,18 +1,8 @@
-/*
- * Aufgabe 7.2
- * Peter Smek, 21.11.2021
- */
+#include "matrix.h"
 
 #include <assert.h>
-#include <math.h>
-#include <stdio.h>
 #include <stdlib.h>
-
-typedef struct _Matrix_ {
-    int m;
-    int n;
-    double *values;
-} Matrix;
+#include <stdio.h>
 
 /**
  * Creates a new mxn Matrix.
@@ -94,32 +84,35 @@ void setMatrixEntry(Matrix *A, int j, int k, double x) {
     A->values[j + k * A->m] = x;
 }
 
-int main() {
-    // Get user input for matrix size.
-    int m = 0, n = 0;
-    do {
-        printf("m = ");
-        scanf("%d", &m);
-    } while (m <= 0);
-    do {
-        printf("n = ");
-        scanf("%d", &n);
-    } while (n <= 0);
+/**
+ * Creates a shallow copy of the given Matrix.
+ */
+Matrix* shallowCopy(Matrix* A) {
+    Matrix *copy = malloc(sizeof(Matrix));
+    assert(copy != NULL);
 
-    // Create matrix.
-    Matrix *matrix = newMatrix(m, n);
+    copy->m = A->m;
+    copy->n = A->n;
+    copy->values = A->values;
+    return copy;
+} 
 
-    // Tests.
-    assert(getMatrixM(matrix) == m);
-    assert(getMatrixN(matrix) == n);
-    setMatrixEntry(matrix, 0, 0, -2352.2);
-    assert(getMatrixEntry(matrix, 0, 0) == -2352.2);
+/**
+ * Creates a deep copy of the given matrix.
+ */
+Matrix* deepCopy(Matrix* A) {
+    Matrix *copy = malloc(sizeof(Matrix));
+    assert(copy != NULL);
 
-    printf("Matrix:\n");
-    printMatrix(matrix);
+    copy->m = A->m;
+    copy->n = A->n;
 
-    // Delete matrix.
-    delMatrix(matrix);
-    
-    return 0;
+    // Copy matrix data.
+    copy->values = malloc(A->m * A->n * sizeof(double));
+    assert(copy->values != NULL);
+    for (int i = 0; i < A->m * A->n; ++i) {
+        copy->values[i] = A->values[i];
+    }
+
+    return copy;
 }
