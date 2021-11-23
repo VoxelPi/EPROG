@@ -2,7 +2,7 @@ C_FLAGS = -Wall -std=c99
 L_FLAGS = -Wall
 
 .PHONY: all
-all: bin/diff bin/matrix1 bin/newton bin/matrix2 bin/matrixVector
+all: bin/diff bin/matrix1 bin/newton bin/matrix2 bin/matrixVector bin/eratosthenes
 
 bin/diff: bin/obj/diff.o
 	gcc $(L_FLAGS) -o $@ $^ -lm
@@ -17,6 +17,9 @@ bin/matrix2: bin/obj/matrix2.o bin/obj/matrix.o matrix.h
 	gcc $(L_FLAGS) -o $@ $^
 
 bin/matrixVector: bin/obj/matrixVector.o bin/obj/matrix.o bin/obj/vector.o matrix.h vector.h
+	gcc $(L_FLAGS) -o $@ $^ -lm
+
+bin/eratosthenes: bin/obj/eratosthenes.o eratosthenes.h
 	gcc $(L_FLAGS) -o $@ $^ -lm
 
 bin/obj/%.o: %.c
