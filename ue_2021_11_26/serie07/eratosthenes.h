@@ -1,3 +1,6 @@
+#ifndef INCLUDE_MATRIX__
+#define INCLUDE_MATRIX__
+
 /*
  * Aufgabe 7.6
  * Peter Smek, 21.11.2021
@@ -10,3 +13,5 @@ typedef struct _Eratosthenes_ {
 } Eratosthenes;
 
 Eratosthenes* doEratosthenesSieve(int n_max);
+
+#endif
