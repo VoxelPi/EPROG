@@ -17,7 +17,7 @@ Vector* matrixVector(Matrix *A, Vector *x) {
     int n = getMatrixN(A);
     assert(getVectorN(x) == n);
 
-    Vector *y = newVector(getMatrixM(A));
+    Vector *y = newVector(m);
 
     // Iterate over all rows of the matrix.
     for (int i = 0; i < m; ++i) {

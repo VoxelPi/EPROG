@@ -34,6 +34,7 @@ Matrix* newMatrix(int m, int n) {
  */ 
 Matrix* delMatrix(Matrix *A) {
     free(A->values);
+    A->values = NULL;
     free(A);
     return NULL;
 }
