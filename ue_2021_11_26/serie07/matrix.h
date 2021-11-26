@@ -4,11 +4,10 @@
 /**
  * Matrix library.
  */ 
-
 typedef struct _Matrix_ {
-    int m;
-    int n;
-    double *values;
+    int m; // number of rows
+    int n; // number of columns
+    double *values; // matrix entries.
 } Matrix;
 
 /**
