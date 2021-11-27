@@ -2,9 +2,12 @@ C_FLAGS = -Wall -std=c99
 L_FLAGS = -Wall
 
 .PHONY: all
-all: bin/dec2bin
+all: bin/dec2bin bin/polynomial_test
 
 bin/dec2bin: bin/obj/dec2bin.o
+	gcc $(L_FLAGS) -o $@ $^ -lm
+
+bin/polynomial_test: bin/obj/polynomial_test.o bin/obj/polynomial.o polynomial.h
 	gcc $(L_FLAGS) -o $@ $^ -lm
 
 bin/obj/%.o: %.c
