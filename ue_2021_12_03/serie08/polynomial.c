@@ -18,9 +18,9 @@ Polynomial* newPoly(int degree) {
     polynomial->degree = degree;
 
     // Create coefficient array of the polynomial, with all entries set to 0.
-    polynomial->coefficients = malloc(degree * sizeof(double));
+    polynomial->coefficients = malloc((degree + 1) * sizeof(double));
     assert(polynomial->coefficients != NULL);
-    for (int i = 0; i < degree; ++i) {
+    for (int i = 0; i <= degree; ++i) {
         polynomial->coefficients[i] = 0.0;
     }
 
