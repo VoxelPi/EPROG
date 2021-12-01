@@ -77,7 +77,7 @@ Polynomial* scanPoly() {
     Polynomial *polynomial = newPoly(degree);
 
     printf("Coefficients:\n");
-    for (int i = 0; i <= degree; ++i) {
+    for (int i = degree; i >= 0; --i) {
         printf("  a_%d = ", i);
         scanf("%lf", &(polynomial->coefficients[i]));
     }
