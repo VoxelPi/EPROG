@@ -57,6 +57,7 @@ int getPolyDegree(Polynomial *polynomial) {
  * Returns the i_th coefficient of the given polynomial.
  */ 
 double getPolyCoefficient(Polynomial *polynomial, int i_coefficient) {
+    assert(0 <= i_coefficient && i_coefficient <= polynomial->degree);
     return polynomial->coefficients[i_coefficient];
 }
 
@@ -64,6 +65,7 @@ double getPolyCoefficient(Polynomial *polynomial, int i_coefficient) {
  * Sets the i_th coefficient of the given polynomial to value.
  */ 
 void setPolyCoefficient(Polynomial *polynomial, int i_coefficient, double value) {
+    assert(0 <= i_coefficient && i_coefficient <= polynomial->degree);
     polynomial->coefficients[i_coefficient] = value;
 }
 
