@@ -21,9 +21,15 @@ int main() {
     setPolyCoefficient(polynomial, 1, 2);
     assert(getPolyCoefficient(polynomial, 1) == 2);
 
+    printPoly(polynomial);
+
     // Delete polynomial.
     polynomial = delPoly(polynomial);
     assert(polynomial == NULL);
+
+    polynomial = scanPoly();
+    printPoly(polynomial);
+    delPoly(polynomial);
 
     printf("All tests passed!\n");
 

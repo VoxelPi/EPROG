@@ -66,3 +66,28 @@ double getPolyCoefficient(Polynomial *polynomial, int i_coefficient) {
 void setPolyCoefficient(Polynomial *polynomial, int i_coefficient, double value) {
     polynomial->coefficients[i_coefficient] = value;
 }
+
+Polynomial* scanPoly() {
+    int degree = 0;
+    do {
+        printf("Degree n = ");
+        scanf("%d", &degree);
+    } while (degree < 0);
+    
+    Polynomial *polynomial = newPoly(degree);
+
+    printf("Coefficients:\n");
+    for (int i = 0; i <= degree; ++i) {
+        printf("  a_%d = ", i);
+        scanf("%lf", &(polynomial->coefficients[i]));
+    }
+
+    return polynomial;
+}
+
+void printPoly(Polynomial *polynomial) {
+    for (int i = polynomial->degree; i >= 1; --i) {
+        printf("%f*x^%d + ", polynomial->coefficients[i], i);
+    }
+    printf("%f\n", polynomial->coefficients[0]);
+}

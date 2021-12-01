@@ -34,4 +34,8 @@ double getPolyCoefficient(Polynomial *polynomial, int i_coefficient);
  */ 
 void setPolyCoefficient(Polynomial *polynomial, int i_coefficient, double value);
 
+Polynomial* scanPoly();
+
+void printPoly(Polynomial *polynomial);
+
 #endif
