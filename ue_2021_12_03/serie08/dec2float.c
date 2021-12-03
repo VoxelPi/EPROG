@@ -9,15 +9,15 @@
 /**
  * Calculates the float corresponding to the given decimal number x.
  */ 
-void dec2float(double x, int M, int **a, int *e) {
+int* dec2float(double x, int M, int *e) {
     // Allocate memory of digits vector.
-    *a = malloc(M * sizeof(int));
-    assert(*a != NULL);
+    int *a = malloc(M * sizeof(int));
+    assert(a != NULL);
 
     // Initialize all digits.
-    (*a)[0] = 1; // Normalized float.
+    a[0] = 1; // Normalized float.
     for (int i = 1; i < M; ++i) {
-        (*a)[i] = 0;
+        a[i] = 0;
     }
 
     // Initialize exponent.
@@ -25,7 +25,7 @@ void dec2float(double x, int M, int **a, int *e) {
 
     // If x is 0, return.
     if (x == 0) {
-        return;
+        return a;
     }
 
     // Note: 0 < x
@@ -57,13 +57,15 @@ void dec2float(double x, int M, int **a, int *e) {
         x *= 2; // Note: 0 <= x < 1
         
         if (x >= 0.5) {
-            (*a)[i] = 1; // Set (i+1)th digit to 1
+            a[i] = 1; // Set (i+1)th digit to 1
             x -= 0.5; // Subtract 0.5 from x. => x < 0.5
         } else {
-            (*a)[i] = 0; // Set (i+1)th digit to 0
+            a[i] = 0; // Set (i+1)th digit to 0
         }
         // Note: 0 <= x < 0.5
     }
+    
+    return a;
 }
 
 int main() {
@@ -86,7 +88,7 @@ int main() {
     } while (M <= 0);
 
     // Calculated corresponding float representation of x.
-    dec2float(x, M, &a, &e);
+    a = dec2float(x, M, &e);
 
     // Print calculated digits.
     printf("digits:\n");
