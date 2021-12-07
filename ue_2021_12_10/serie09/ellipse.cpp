@@ -59,7 +59,7 @@ void Ellipse::printFocalPoints() {
         b2_x = center[0] + c;
         b2_y = center[1];
     } else if (a < b) {
-        double c = std::sqrt(a * a - b * b);
+        double c = std::sqrt(b * b - a * a);
 
         b1_x = center[0];
         b1_y = center[1] - c;
