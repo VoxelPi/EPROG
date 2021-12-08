@@ -2,7 +2,7 @@ C_FLAGS = -Wall --std=c++17
 L_FLAGS = -Wall
 
 .PHONY: all
-all: bin/ellipse_test bin/sparkonto bin/triangle_test bin/university bin/kunde_test bin/palindrom
+all: bin/ellipse_test bin/sparkonto bin/triangle_test bin/university bin/kunde_test bin/palindrom bin/name_test
 
 bin/ellipse_test: bin/obj/ellipse_test.o bin/obj/ellipse.o ellipse.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
@@ -20,6 +20,9 @@ bin/kunde_test: bin/obj/kunde_test.o bin/obj/kunde.o kunde.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
 bin/palindrom: bin/obj/palindrom.o
+	g++ $(L_FLAGS) -o $@ $^ -lm
+
+bin/name_test: bin/obj/name_test.o bin/obj/name.o name.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
 bin/obj/%.o: %.cpp
