@@ -5,7 +5,7 @@
 
 class Stoppuhr {
 private:
-    int state;
+    int state; // State of the timer. 0 = initialized, 1 = running, 2 = stopped.
     clock_t start;
     clock_t stop;
 
