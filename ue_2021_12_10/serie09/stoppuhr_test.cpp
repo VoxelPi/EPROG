@@ -40,7 +40,7 @@ int main() {
     stoppuhr.pushButtonStartStop();
 
     // Function to measure.
-    time_b(20000);
+    time_b(100000);
 
     stoppuhr.pushButtonStartStop();
     stoppuhr.printElapsedTime();

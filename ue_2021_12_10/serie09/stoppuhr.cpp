@@ -36,6 +36,9 @@ void Stoppuhr::printElapsedTime() {
         elapsed_ticks = stop - start;
     }
 
+    // Uncomment to test message format
+    // elapsed_ticks = (clock_t)1000000 * 60 * 60 * 5 + 1000000 * 60 * 23 + 1000000 * 34 + 234324;
+
     int hours = elapsed_ticks / (CLOCKS_PER_SEC * 60 * 60);
     elapsed_ticks -= hours * CLOCKS_PER_SEC * 60 * 60; 
 
