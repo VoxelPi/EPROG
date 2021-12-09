@@ -21,7 +21,7 @@ int main() {
     Triangle equilateral;
     equilateral.setX(-1.0, 0.0);
     equilateral.setY(1.0, 0.0);
-    equilateral.setZ(0.0, std::sqrt(3));
+    equilateral.setZ(0.0, sqrt(3));
     std::cout << "  area = " << equilateral.getArea() << std::endl;
     std::cout << "  perimeter = " << equilateral.getPerimeter() << std::endl;
     std::cout << "  is equilateral = " << equilateral.isEquilateral() << std::endl;

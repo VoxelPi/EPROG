@@ -20,17 +20,17 @@ double Triangle::getArea() {
 }
 
 double Triangle::getPerimeter() {
-    double side_xy = std::sqrt((x[0] - y[0]) * (x[0] - y[0]) + (x[1] - y[1]) * (x[1] - y[1]));
-    double side_yz = std::sqrt((y[0] - z[0]) * (y[0] - z[0]) + (y[1] - z[1]) * (y[1] - z[1]));
-    double side_zx = std::sqrt((z[0] - x[0]) * (z[0] - x[0]) + (z[1] - x[1]) * (z[1] - x[1]));
+    double side_xy = sqrt((x[0] - y[0]) * (x[0] - y[0]) + (x[1] - y[1]) * (x[1] - y[1]));
+    double side_yz = sqrt((y[0] - z[0]) * (y[0] - z[0]) + (y[1] - z[1]) * (y[1] - z[1]));
+    double side_zx = sqrt((z[0] - x[0]) * (z[0] - x[0]) + (z[1] - x[1]) * (z[1] - x[1]));
 
     return side_xy + side_yz + side_zx;
 }
 
 bool Triangle::isEquilateral() {
-    double side_xy = std::sqrt((x[0] - y[0]) * (x[0] - y[0]) + (x[1] - y[1]) * (x[1] - y[1]));
-    double side_yz = std::sqrt((y[0] - z[0]) * (y[0] - z[0]) + (y[1] - z[1]) * (y[1] - z[1]));
-    double side_zx = std::sqrt((z[0] - x[0]) * (z[0] - x[0]) + (z[1] - x[1]) * (z[1] - x[1]));
+    double side_xy = sqrt((x[0] - y[0]) * (x[0] - y[0]) + (x[1] - y[1]) * (x[1] - y[1]));
+    double side_yz = sqrt((y[0] - z[0]) * (y[0] - z[0]) + (y[1] - z[1]) * (y[1] - z[1]));
+    double side_zx = sqrt((z[0] - x[0]) * (z[0] - x[0]) + (z[1] - x[1]) * (z[1] - x[1]));
 
     return std::fabs(side_xy - side_yz) <= 1e-6 && std::fabs(side_yz - side_zx) <= 1e-6;
 }

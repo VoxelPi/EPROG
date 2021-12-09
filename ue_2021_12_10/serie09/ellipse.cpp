@@ -51,7 +51,7 @@ bool Ellipse::isCircle() {
 void Ellipse::printFocalPoints() {
     double b1_x = 0, b1_y = 0, b2_x = 0, b2_y = 0;
     if (a > b) {
-        double c = std::sqrt(a * a - b * b);
+        double c = sqrt(a * a - b * b);
 
         b1_x = center[0] - c;
         b1_y = center[1];
@@ -59,7 +59,7 @@ void Ellipse::printFocalPoints() {
         b2_x = center[0] + c;
         b2_y = center[1];
     } else if (a < b) {
-        double c = std::sqrt(b * b - a * a);
+        double c = sqrt(b * b - a * a);
 
         b1_x = center[0];
         b1_y = center[1] - c;
@@ -87,5 +87,5 @@ double Ellipse::getEccentricity() {
         max = b;
         min = a;
     }
-    return std::sqrt(1 - (min / max) * (min / max));
+    return sqrt(1 - (min / max) * (min / max));
 }
