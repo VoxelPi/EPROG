@@ -25,6 +25,11 @@ public:
     Vector multiplyLeft(Vector& x);
     // Calculates the vector-matrix product.
     Vector multiplyRight(Vector& x);
+
+    // UE 10.4
+    void scanMatrix(int n);
+    void printMatrix();
+    double trace();
 };
 
 

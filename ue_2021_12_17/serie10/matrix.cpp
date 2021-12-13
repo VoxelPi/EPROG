@@ -3,6 +3,7 @@
 #include <cassert>
 #include <cmath>
 #include <cstdlib>
+#include <iomanip>
 #include <iostream>
 
 Matrix::Matrix() : n(0), coeff((double*) NULL) {
@@ -79,5 +80,42 @@ Vector Matrix::multiplyRight(Vector& x) {
         result.set(i, r_i);
     }
 
+    return result;
+}
+
+/**
+ * UE 10.4
+ */
+void Matrix::scanMatrix(int n) {
+    // Free existing data.
+    if (this->n != 0 && this->coeff != NULL) {
+        free(this->coeff);
+    }
+    this->n = n;
+    this->coeff = (double*) malloc(n * n * sizeof(double));
+    assert(this->coeff != NULL);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            std::cout << "a[" << i << ", " << j << "] = ";
+            std::cin >> coeff[i + j * n];
+        }
+    }
+}
+
+void Matrix::printMatrix() {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            std::cout << std::setw(8) << get(i, j) << " "; // setw(8) sets the width of the following output.
+        }
+        std::cout << std::endl;
+    }
+}
+
+double Matrix::trace() {
+    double result;
+    for (int j = 0; j < n; ++j) {
+        result += coeff[j + j * n];
+    }
     return result;
 }
