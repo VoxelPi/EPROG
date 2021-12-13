@@ -45,3 +45,39 @@ void Matrix::set(int i, int j, double value) {
 
     coeff[i + j * n] = value;
 }
+
+/**
+ * UE 10.3
+ */ 
+
+Vector Matrix::multiplyLeft(Vector& x) {
+    assert(n == x.size());
+
+    Vector result(n, 0.0);
+
+    for (int i = 0; i < n; ++i) {
+        double r_i = 0.0;
+        for (int j = 0; j < n; ++j) {
+            r_i += this->get(i, j) * x.get(j);
+        } 
+        result.set(i, r_i);
+    }
+
+    return result;
+}
+
+Vector Matrix::multiplyRight(Vector& x) {
+    assert(n == x.size());
+
+    Vector result(n);
+
+    for (int i = 0; i < n; ++i) {
+        double r_i = 0.0;
+        for (int j = 0; j < n; ++j) {
+            r_i += this->get(j, i) * x.get(j);
+        } 
+        result.set(i, r_i);
+    }
+
+    return result;
+}
