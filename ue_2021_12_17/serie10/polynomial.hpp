@@ -25,6 +25,9 @@ public:
 
     // UE 10.6
     Polynomial diff(int k);
+
+    // UE 10.7
+    double eval(double x);
 };
 
 #endif

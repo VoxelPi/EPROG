@@ -64,6 +64,9 @@ void Polynomial::printPoly() {
     std::cout << coeff[0] << std::endl;
 }
 
+/**
+ * UE 10.6
+ */ 
 Polynomial Polynomial::diff(int k) {
     // Degree of derivative is deg(poly) - k.
     int d_n = n - k;
@@ -91,4 +94,18 @@ Polynomial Polynomial::diff(int k) {
     }
 
     return derivative;
+}
+
+/**
+ * UE 10.7
+ */ 
+double Polynomial::eval(double x) {
+    double y = coeff[0];
+    double x_i = 1;
+    for (int i = 1; i <= n; ++i) {
+        x_i *= x;
+        y += coeff[i] *= x_i;
+    }
+
+    return y;
 }
