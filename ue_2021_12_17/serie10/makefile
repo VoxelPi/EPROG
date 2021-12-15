@@ -1,5 +1,5 @@
-C_FLAGS = -Wall --std=c++17
-L_FLAGS = -Wall
+C_FLAGS = -Wall --std=c++17 -g
+L_FLAGS = -Wall -g
 
 .PHONY: all
 all: bin/matrix_test1 bin/polynomial_test1 bin/matrix_test2 bin/matrix_test3 bin/matrix_test4
