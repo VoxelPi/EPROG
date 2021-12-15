@@ -14,6 +14,10 @@ public:
 
     double getCoeff(int i);
     void setCoeff(int i, double value);
+
+    // Optional, used for testing.
+    void scanPoly(int n);
+    void printPoly();
 };
 
 #endif
