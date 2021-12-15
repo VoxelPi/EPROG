@@ -30,6 +30,12 @@ public:
     void scanMatrix(int n);
     void printMatrix();
     double trace();
+
+    // UE 10.5
+    double columnSumNorm();
+    double rowSumNorm();
+    double frobeniusNorm();
+    double maxNorm();
 };
 
 

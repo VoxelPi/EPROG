@@ -2,7 +2,7 @@ C_FLAGS = -Wall --std=c++17
 L_FLAGS = -Wall
 
 .PHONY: all
-all: bin/matrix_test1 bin/polynomial_test1 bin/matrix_test2 bin/matrix_test3
+all: bin/matrix_test1 bin/polynomial_test1 bin/matrix_test2 bin/matrix_test3 bin/matrix_test4
 
 bin/matrix_test1: bin/obj/matrix_test1.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
@@ -14,6 +14,9 @@ bin/matrix_test2: bin/obj/matrix_test2.o bin/obj/matrix.o matrix.hpp bin/obj/vec
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
 bin/matrix_test3: bin/obj/matrix_test3.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp
+	g++ $(L_FLAGS) -o $@ $^ -lm
+
+bin/matrix_test4: bin/obj/matrix_test4.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
 bin/obj/%.o: %.cpp

@@ -119,3 +119,67 @@ double Matrix::trace() {
     }
     return result;
 }
+
+/**
+ * UE 10.5
+ */
+double Matrix::columnSumNorm() {
+    double max = 0;
+
+    for (int k = 0; k < n; ++k) {
+        double sum = 0;
+        for (int j = 0; j < n; ++j) {
+            sum += fabs(get(j, k));
+        }
+
+        if (sum > max) {
+            max = sum;
+        }
+    }
+
+    return max;
+}
+
+double Matrix::rowSumNorm() {
+    double max = 0;
+
+    for (int j = 0; j < n; ++j) {
+        double sum = 0;
+        for (int k = 0; k < n; ++k) {
+            sum += fabs(get(j, k));
+        }
+
+        if (sum > max) {
+            max = sum;
+        }
+    }
+
+    return max;
+}
+
+double Matrix::frobeniusNorm() {
+    double result = 0;
+
+    for (int j = 0; j < n; ++j) {
+        for (int k = 0; k < n; ++k) {
+            result += get(j, k) * get(j, k);
+        }
+    }
+
+    return sqrt(result);
+}
+
+double Matrix::maxNorm() {
+    double max = 0;
+
+    for (int j = 0; j < n; ++j) {
+        for (int k = 0; k < n; ++k) {
+            double abs_a_jk = fabs(get(j, k));
+            if (abs_a_jk > max) {
+                max = abs_a_jk;
+            }
+        }
+    }
+
+    return max;
+}
