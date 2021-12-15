@@ -109,3 +109,32 @@ double Polynomial::eval(double x) {
 
     return y;
 }
+
+/**
+ * UE 10.8
+ */
+Polynomial addPolynomials(Polynomial& p, Polynomial& q) {
+    int n; // Calculate degree of sum polynomial
+    if (p.degree() > q.degree()) {
+        n = p.degree();
+    } else {
+        n = q.degree();
+    }
+
+    Polynomial sum(n);
+
+    for (int i = 0; i <= n; ++i) {
+        double p_c_i = 0, q_c_i = 0;
+
+        if (p.degree() >= i) {
+            p_c_i = p.getCoeff(i);
+        }
+        if (q.degree() >= i) {
+            q_c_i = q.getCoeff(i);
+        }
+
+        sum.setCoeff(i, p_c_i + q_c_i);
+    }
+
+    return sum;
+}

@@ -30,4 +30,7 @@ public:
     double eval(double x);
 };
 
+// UE 10.8
+Polynomial addPolynomials(Polynomial& p, Polynomial& q);
+
 #endif
