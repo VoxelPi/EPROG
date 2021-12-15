@@ -87,16 +87,15 @@ Vector Matrix::multiplyRight(Vector& x) {
  * UE 10.4
  */
 void Matrix::scanMatrix(int n) {
-    // Free existing data.
-    if (this->n != 0 && this->coeff != NULL) {
-        free(this->coeff);
-    }
+    // Reallocate coefficients array.
     this->n = n;
-    this->coeff = (double*) malloc(n * n * sizeof(double));
+    this->coeff = (double*) realloc(this->coeff, n * n * sizeof(double));
     assert(this->coeff != NULL);
 
+    // Get user input.
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
+            this->coeff[i + j * n] = 0;
             std::cout << "a[" << i << ", " << j << "] = ";
             std::cin >> coeff[i + j * n];
         }
