@@ -104,7 +104,7 @@ double Polynomial::eval(double x) {
     double x_i = 1;
     for (int i = 1; i <= n; ++i) {
         x_i *= x;
-        y += coeff[i] *= x_i;
+        y += coeff[i] * x_i;
     }
 
     return y;
