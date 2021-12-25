@@ -39,6 +39,10 @@ public:
 
     // Calculates the determinant.
     double det() const;
+
+    bool isDiagonal() const;
+    bool isSymmetric() const;
+    bool isSkewSymmetric() const;
 };
 
 #endif

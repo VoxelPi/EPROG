@@ -240,3 +240,36 @@ double Matrix::det() const {
 
     return determinante;
 }
+
+bool Matrix::isDiagonal() const {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            if (i != j && get(i, j) != 0) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool Matrix::isSymmetric() const {
+    for (int i = 0; i < n; ++i) {
+        for (int j = i; j < n; ++j) { // j = i optimization, only check upper triangle.
+            if (get(i, j) != get(j, i)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool Matrix::isSkewSymmetric() const {
+    for (int i = 0; i < n; ++i) {
+        for (int j = i; j < n; ++j) { // j = i optimization, only check upper triangle.
+            if (get(i, j) != -get(j, i)) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
