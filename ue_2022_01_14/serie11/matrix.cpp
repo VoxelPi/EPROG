@@ -7,7 +7,7 @@
 #include <iostream>
 
 Matrix::Matrix() : n(0), coeff((double*) NULL) {
-    std::cout << "allocate empty matrix" << std::endl;
+    // std::cout << "allocate empty matrix" << std::endl;
 }
 
 Matrix::Matrix(int n, double init) {
@@ -21,13 +21,13 @@ Matrix::Matrix(int n, double init) {
     for (int i = 0; i < n * n; ++i) {
         this->coeff[i] = init;
     }
-    std::cout << "allocated " << n << "x" << n << "-matrix (init: " << init << ")" << std::endl;
+    // std::cout << "allocated " << n << "x" << n << "-matrix (init: " << init << ")" << std::endl;
 }
 
 Matrix::~Matrix() {
     free(coeff);
     coeff = NULL;
-    std::cout << "free matrix, size " << n << "x" << n << std::endl;
+    // std::cout << "free matrix, size " << n << "x" << n << std::endl;
 }
 
 Matrix::Matrix(const Matrix& rhs) {
@@ -39,7 +39,7 @@ Matrix::Matrix(const Matrix& rhs) {
         this->coeff[i] = rhs.coeff[i];
     }
 
-    std::cout << "copy constructor" << std::endl;
+    // std::cout << "copy constructor" << std::endl;
 }
 
 Matrix& Matrix::operator=(const Matrix& rhs) {
@@ -50,7 +50,7 @@ Matrix& Matrix::operator=(const Matrix& rhs) {
         this->coeff[i] = rhs.coeff[i];
     }
 
-    std::cout << "assignment operator" << std::endl;
+    // std::cout << "assignment operator" << std::endl;
 
     return *this;
 }
@@ -197,4 +197,46 @@ double Matrix::maxNorm() const {
     }
 
     return max;
+}
+
+double Matrix::det() const {
+    if (n == 1) {
+        return coeff[0];
+    }
+
+    double determinante = 0.0;
+
+    int yi = 0;
+    for (int xi = 0; xi < n; ++xi) {
+        // Get selected matrix element.
+        double a_ij = get(xi, yi);
+
+        // Calculate sign.
+        // xi + 1, yi + 1 because indices should start at 1.
+        if (((xi + 1) + (yi + 1)) % 2 == 1) {
+            a_ij *= -1;
+        }
+
+        // Calculate A_ij
+        Matrix sub_matrix(n - 1);
+        double *p_data_w = sub_matrix.coeff;
+        for (int y = 0; y < n; ++y) {
+            if (y == yi) {
+                // Skip column
+                continue;
+            }
+            for (int x = 0; x < n; ++x) {
+                if (x == xi) {
+                    // Skip row
+                    continue;
+                }
+                *p_data_w = coeff[x + y * n];
+                ++p_data_w;
+            }
+        }
+
+        determinante += a_ij * sub_matrix.det();
+    }
+
+    return determinante;
 }

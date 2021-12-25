@@ -36,7 +36,9 @@ public:
     double rowSumNorm() const;
     double frobeniusNorm() const;
     double maxNorm() const;
-};
 
+    // Calculates the determinant.
+    double det() const;
+};
 
 #endif
