@@ -111,6 +111,25 @@ double Polynomial::eval(double x) const {
 }
 
 /**
+ * UE 11.8
+ */
+double Polynomial::computeIntegral(double alpha, double beta) const {
+    assert(alpha < beta);
+
+    double result = 0.0;
+
+    double alpha_power = alpha; // alpha^(i+1)
+    double beta_power = beta;   //  beta^(i+1)
+    for (int j = 0; j <= n; ++j) {
+        result += (coeff[j] * (beta_power - alpha_power)) / (j + 1);
+        alpha_power *= alpha;
+        beta_power *= beta;
+    }
+    
+    return result;
+}
+
+/**
  * UE 10.8
  */
 Polynomial addPolynomials(const Polynomial& p, const Polynomial& q) {

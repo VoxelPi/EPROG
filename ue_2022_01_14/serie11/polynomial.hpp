@@ -28,6 +28,9 @@ public:
 
     // UE 10.7
     double eval(double x) const;
+
+    // UE 11.8
+    double computeIntegral(double alpha, double beta) const;
 };
 
 // UE 10.8
