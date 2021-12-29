@@ -16,6 +16,8 @@ public:
     Matrix(const Matrix& rhs);
     Matrix& operator=(const Matrix& rhs);
 
+    Matrix(int n, double lb, double ub);
+
     // return matrix dimension
     int size() const;
 

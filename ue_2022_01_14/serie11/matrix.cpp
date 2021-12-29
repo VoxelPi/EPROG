@@ -3,6 +3,7 @@
 #include <cassert>
 #include <cmath>
 #include <cstdlib>
+#include <ctime>
 #include <iomanip>
 #include <iostream>
 
@@ -53,6 +54,23 @@ Matrix& Matrix::operator=(const Matrix& rhs) {
     // std::cout << "assignment operator" << std::endl;
 
     return *this;
+}
+
+Matrix::Matrix(int n, double lb, double ub) {
+    assert(n > 0);
+    this->n = n;
+    
+    // Check that lb is <= ub
+    assert(lb <= ub); 
+
+    // Allocate coefficient array.
+    this->coeff = (double*) malloc(n * n * sizeof(double));
+    assert(coeff != (double*) NULL);
+
+    srand(time(NULL)); // Set seed to current time.
+    for (int i = 0; i < n * n; ++i) {
+        this->coeff[i] = ((double)rand() / RAND_MAX) * (ub - lb) + lb; // Generate random number between lb and ub
+    }
 }
 
 int Matrix::size() const {
