@@ -61,3 +61,23 @@ void ComplexVector::set(int i, const Complex& value) {
 
     this->coeff[i] = value;
 }
+
+Vector ComplexVector::realPart() const {
+    Vector real(n);
+    
+    for (int i = 0; i < n; ++i) {
+        real.set(i, coeff[i].real());
+    }
+
+    return real;
+}
+
+Vector ComplexVector::imaginaryPart() const {
+    Vector imag(n);
+    
+    for (int i = 0; i < n; ++i) {
+        imag.set(i, coeff[i].imag());
+    }
+
+    return imag;
+}

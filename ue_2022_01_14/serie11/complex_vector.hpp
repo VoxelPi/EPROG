@@ -2,6 +2,7 @@
 #define INCLUDE_COMPLEX_VECTOR__
 
 #include "complex.hpp"
+#include "vector.hpp"
 
 class ComplexVector
 {
@@ -21,6 +22,9 @@ public:
     // read and write vector coefficients
     Complex get(int i) const;
     void set(int i, const Complex& value);
+
+    Vector realPart() const;
+    Vector imaginaryPart() const;
 };
 
 
