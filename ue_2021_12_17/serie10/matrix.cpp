@@ -112,7 +112,7 @@ void Matrix::printMatrix() {
 }
 
 double Matrix::trace() {
-    double result;
+    double result = 0;
     for (int j = 0; j < n; ++j) {
         result += coeff[j + j * n];
     }
