@@ -337,7 +337,7 @@ const Matrix operator-(const Matrix& A, const Matrix& B) {
     return result;
 }
 
-// Matrix multiplication UE 12.1
+// Matrix-Matrix multiplication UE 12.1
 const Matrix operator*(const Matrix& A, const Matrix& B) {
     // Check if both matrices have the same size.
     assert(A.size() == B.size());
@@ -357,4 +357,57 @@ const Matrix operator*(const Matrix& A, const Matrix& B) {
     }
 
     return result;
+}
+
+// Transpose matrix UE 12.3
+const Matrix Matrix::operator~() const {
+    Matrix result(n);
+
+    // Set matrix entries r_ij to a_ji.
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            result.set(i, j, get(j, i));
+        }
+    }
+
+    return result;
+}
+
+// Matrix-Vector multiplication UE 12.3
+const Vector operator*(const Matrix& A, const Vector& x) {
+    // Check if matrix and vector have the same size.
+    assert(A.size() == x.size());
+
+    // Create a new matrix of the same size.
+    Vector result(x.size());
+
+    // Calculate matrix-vector product.
+    for (int i = 0; i < result.size(); ++i) {
+        double sum = 0.0;
+        for (int k = 0; k < A.size(); ++k) {
+            sum += A.get(i, k) * x.get(k);
+        }
+        result.set(i, sum);
+    }
+
+    return result;
+}
+
+// Matrix-Scalar multiplication UE 12.3
+const Matrix operator*(const Matrix& A, const double s) {
+    Matrix result(A.size());
+
+    // Scale all matrix entries.
+    for (int i = 0; i < A.size(); ++i) {
+        for (int j = 0; j < A.size(); ++j) {
+            result.set(i, j, A.get(i, j) * s);
+        }
+    }
+
+    return result;
+}
+
+// Scalar-Matrix multiplication UE 12.3
+const Matrix operator*(const double s, const Matrix& A) {
+    return A * s; // Use implementation for A*s.
 }

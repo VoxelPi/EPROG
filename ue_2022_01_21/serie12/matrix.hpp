@@ -48,6 +48,9 @@ public:
 
     // Unary minus UE 12.1
     const Matrix operator-() const;
+
+    // Transpose matrix UE 12.3
+    const Matrix operator~() const;
 };
 
 // Matrix addition UE 12.1
@@ -56,7 +59,16 @@ const Matrix operator+(const Matrix& A, const Matrix& B);
 // Matrix subtraction UE 12.1
 const Matrix operator-(const Matrix& A, const Matrix& B);
 
-// Matrix multiplication UE 12.1
+// Matrix-Matrix multiplication UE 12.1
 const Matrix operator*(const Matrix& A, const Matrix& B);
+
+// Matrix-Vector multiplication UE 12.3
+const Vector operator*(const Matrix& A, const Vector& x);
+
+// Matrix-Scalar multiplication UE 12.3
+const Matrix operator*(const Matrix& A, const double s);
+
+// Scalar-Matrix multiplication UE 12.3
+const Matrix operator*(const double s, const Matrix& A);
 
 #endif
