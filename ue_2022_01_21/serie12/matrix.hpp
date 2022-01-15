@@ -45,6 +45,18 @@ public:
     bool isDiagonal() const;
     bool isSymmetric() const;
     bool isSkewSymmetric() const;
+
+    // Unary minus UE 12.1
+    const Matrix operator-() const;
 };
+
+// Matrix addition UE 12.1
+const Matrix operator+(const Matrix& A, const Matrix& B);
+
+// Matrix subtraction UE 12.1
+const Matrix operator-(const Matrix& A, const Matrix& B);
+
+// Matrix multiplication UE 12.1
+const Matrix operator*(const Matrix& A, const Matrix& B);
 
 #endif

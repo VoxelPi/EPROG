@@ -291,3 +291,70 @@ bool Matrix::isSkewSymmetric() const {
     }
     return true;
 }
+
+// Unary minus UE 12.1
+const Matrix Matrix::operator-() const {
+    Matrix result(n);
+    for (int i = 0; i < n * n; ++i) {
+        result.coeff[i] = -coeff[i];
+    }
+    return result;
+}
+
+// Matrix addition UE 12.1
+const Matrix operator+(const Matrix& A, const Matrix& B) {
+    // Check if both matrices have the same size.
+    assert(A.size() == B.size());
+
+    // Create a new matrix of the same size.
+    Matrix result(A.size());
+
+    // Set matrix entries to a_ij + b_ij.
+    for (int i = 0; i < result.size(); ++i) {
+        for (int j = 0; j < result.size(); ++j) {
+            result.set(i, j, A.get(i, j) + B.get(i, j));
+        }
+    }
+
+    return result;
+}
+
+// Matrix subtraction UE 12.1
+const Matrix operator-(const Matrix& A, const Matrix& B) {
+    // Check if both matrices have the same size.
+    assert(A.size() == B.size());
+
+    // Create a new matrix of the same size.
+    Matrix result(A.size());
+
+    // Set matrix entries to a_ij - b_ij.
+    for (int i = 0; i < result.size(); ++i) {
+        for (int j = 0; j < result.size(); ++j) {
+            result.set(i, j, A.get(i, j) - B.get(i, j));
+        }
+    }
+
+    return result;
+}
+
+// Matrix multiplication UE 12.1
+const Matrix operator*(const Matrix& A, const Matrix& B) {
+    // Check if both matrices have the same size.
+    assert(A.size() == B.size());
+
+    // Create a new matrix of the same size.
+    Matrix result(A.size());
+
+    // Calculate matrix product.
+    for (int i = 0; i < result.size(); ++i) {
+        for (int j = 0; j < result.size(); ++j) {
+            double sum = 0.0;
+            for (int k = 0; k < result.size(); ++k) {
+                sum += A.get(i, k) * B.get(k, j);
+            }
+            result.set(i, j, sum);
+        }
+    }
+
+    return result;
+}
