@@ -140,12 +140,7 @@ void Matrix::scanMatrix(int n) {
 }
 
 void Matrix::printMatrix() const {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) {
-            std::cout << std::setw(8) << get(i, j) << " "; // setw(8) sets the width of the following output.
-        }
-        std::cout << std::endl;
-    }
+    std::cout << *this;
 }
 
 double Matrix::trace() const {
@@ -410,4 +405,16 @@ const Matrix operator*(const Matrix& A, const double s) {
 // Scalar-Matrix multiplication UE 12.3
 const Matrix operator*(const double s, const Matrix& A) {
     return A * s; // Use implementation for A*s.
+}
+
+// UE 12.4
+std::ostream& operator<<(std::ostream& output, const Matrix& x) {
+    for (int i = 0; i < x.size(); ++i) {
+        for (int j = 0; j < x.size(); ++j) {
+            output << std::setw(8) << x.get(i, j) << " "; // setw(8) sets the width of the following output.
+        }
+        output << std::endl;
+    }
+
+    return output;
 }

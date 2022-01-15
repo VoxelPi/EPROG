@@ -1,6 +1,8 @@
 #ifndef INCLUDE_MATRIX__
 #define INCLUDE_MATRIX__
 
+#include <iostream>
+
 #include "vector.hpp"
 
 class Matrix {
@@ -70,5 +72,8 @@ const Matrix operator*(const Matrix& A, const double s);
 
 // Scalar-Matrix multiplication UE 12.3
 const Matrix operator*(const double s, const Matrix& A);
+
+// UE 12.4
+std::ostream& operator<<(std::ostream& output, const Matrix& x);
 
 #endif
