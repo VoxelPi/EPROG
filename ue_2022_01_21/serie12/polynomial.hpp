@@ -40,4 +40,7 @@ Polynomial addPolynomials(const Polynomial& p, const Polynomial& q);
 // UE 11.7
 const Polynomial prodPolynomials(const Polynomial& p, const Polynomial& q);
 
+// UE 12.5
+bool operator==(const Polynomial& lhs, const Polynomial& rhs);
+
 #endif

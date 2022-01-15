@@ -1,8 +1,11 @@
 #include "polynomial.hpp"
 
 #include <cassert>
+#include <cmath>
 #include <cstdlib>
 #include <iostream>
+
+#define TOLERANCE 10e-13
 
 Polynomial::Polynomial(int n) : n(n) {
     assert(n >= 0);
@@ -185,4 +188,19 @@ const Polynomial prodPolynomials(const Polynomial& p, const Polynomial& q) {
     }
 
     return result;
+}
+
+// UE 12.5
+bool operator==(const Polynomial& lhs, const Polynomial& rhs) {
+    if (lhs.degree() != rhs.degree()) {
+        return false;
+    }
+
+    for (int i = 0; i <= lhs.degree(); ++i) {
+        if (fabs(lhs.getCoeff(i) - rhs.getCoeff(i)) > TOLERANCE) {
+            return false;
+        }
+    }
+
+    return true;
 }
