@@ -5,7 +5,7 @@
 #include <cassert>
 #include <iostream>
 
-#include "symetric_matrix.hpp"
+#include "symmetric_matrix.hpp"
 
 int main() {
     SymmetricMatrix A(5);

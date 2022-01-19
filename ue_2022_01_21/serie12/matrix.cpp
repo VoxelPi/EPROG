@@ -1,5 +1,5 @@
 #include "matrix.hpp"
-#include "symetric_matrix.hpp"
+#include "symmetric_matrix.hpp"
 
 #include <cassert>
 #include <cmath>

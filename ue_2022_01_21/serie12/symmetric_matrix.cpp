@@ -1,4 +1,4 @@
-#include "symetric_matrix.hpp"
+#include "symmetric_matrix.hpp"
 
 #include <cstdlib>
 #include <iostream>

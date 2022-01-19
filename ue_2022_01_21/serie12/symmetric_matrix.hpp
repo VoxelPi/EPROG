@@ -1,5 +1,5 @@
-#ifndef INCLUDE_SYMETRIC_MATRIX__
-#define INCLUDE_SYMETRIC_MATRIX__
+#ifndef INCLUDE_SYMMETRIC_MATRIX__
+#define INCLUDE_SYMMETRIC_MATRIX__
 
 #include "matrix.hpp"
 
