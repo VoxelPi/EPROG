@@ -1,4 +1,5 @@
 #include "matrix.hpp"
+#include "symetric_matrix.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -41,6 +42,18 @@ Matrix::Matrix(const Matrix& rhs) {
     }
 
     // std::cout << "copy constructor" << std::endl;
+}
+
+Matrix::Matrix(const SymmetricMatrix& rhs) {
+    this->n = rhs.n;
+    this->coeff = (double*) malloc(rhs.n * rhs.n * sizeof(double));
+    assert(this->coeff != NULL);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            set(i, j, rhs.get(i, j));
+        }
+    }
 }
 
 Matrix& Matrix::operator=(const Matrix& rhs) {

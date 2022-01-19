@@ -2,21 +2,24 @@ C_FLAGS = -Wall --std=c++17 -g
 L_FLAGS = -Wall -g
 
 .PHONY: all
-all: bin/matrix_test1 bin/account_test1 bin/matrix_test2 bin/matrix_test3 bin/polynomial_test1 bin/person_test1
+all: bin/matrix_test1 bin/account_test1 bin/matrix_test2 bin/matrix_test3 bin/polynomial_test1 bin/symetric_matrix_test1 bin/person_test1
 
-bin/matrix_test1: bin/obj/matrix_test1.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp
+bin/matrix_test1: bin/obj/matrix_test1.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp bin/obj/symetric_matrix.o symetric_matrix.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
 bin/account_test1: bin/obj/account_test1.o bin/obj/account.o account.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
-bin/matrix_test2: bin/obj/matrix_test2.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp
+bin/matrix_test2: bin/obj/matrix_test2.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp bin/obj/symetric_matrix.o symetric_matrix.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
-bin/matrix_test3: bin/obj/matrix_test3.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp
+bin/matrix_test3: bin/obj/matrix_test3.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp bin/obj/symetric_matrix.o symetric_matrix.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
 bin/polynomial_test1: bin/obj/polynomial_test1.o bin/obj/polynomial.o polynomial.hpp
+	g++ $(L_FLAGS) -o $@ $^ -lm
+
+bin/symetric_matrix_test1: bin/obj/symetric_matrix_test1.o bin/obj/matrix.o matrix.hpp bin/obj/vector.o vector.hpp bin/obj/symetric_matrix.o symetric_matrix.hpp
 	g++ $(L_FLAGS) -o $@ $^ -lm
 
 bin/person_test1: bin/obj/person_test1.o bin/obj/person.o person.hpp

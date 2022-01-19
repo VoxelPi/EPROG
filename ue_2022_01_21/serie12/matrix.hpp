@@ -5,8 +5,10 @@
 
 #include "vector.hpp"
 
+class SymmetricMatrix;
+
 class Matrix {
-private:
+protected:
     int n;
     double *coeff;
 
@@ -16,6 +18,7 @@ public:
     ~Matrix();
 
     Matrix(const Matrix& rhs);
+    Matrix(const SymmetricMatrix& rhs); // Cast SymmetricMatrix -> Matrix
     Matrix& operator=(const Matrix& rhs);
 
     Matrix(int n, double lb, double ub);
