@@ -1,5 +1,6 @@
 #include "matrix.hpp"
 #include "symmetric_matrix.hpp"
+#include "diagonal_matrix.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -45,6 +46,18 @@ Matrix::Matrix(const Matrix& rhs) {
 }
 
 Matrix::Matrix(const SymmetricMatrix& rhs) {
+    this->n = rhs.n;
+    this->coeff = (double*) malloc(rhs.n * rhs.n * sizeof(double));
+    assert(this->coeff != NULL);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            set(i, j, rhs.get(i, j));
+        }
+    }
+}
+
+Matrix::Matrix(const DiagonalMatrix& rhs) {
     this->n = rhs.n;
     this->coeff = (double*) malloc(rhs.n * rhs.n * sizeof(double));
     assert(this->coeff != NULL);

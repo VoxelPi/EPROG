@@ -6,6 +6,7 @@
 #include "vector.hpp"
 
 class SymmetricMatrix;
+class DiagonalMatrix;
 
 class Matrix {
 protected:
@@ -19,6 +20,7 @@ public:
 
     Matrix(const Matrix& rhs);
     Matrix(const SymmetricMatrix& rhs); // Cast SymmetricMatrix -> Matrix
+    Matrix(const DiagonalMatrix& rhs); // Cast DiagonalMatrix -> Matrix
     Matrix& operator=(const Matrix& rhs);
 
     Matrix(int n, double lb, double ub);
