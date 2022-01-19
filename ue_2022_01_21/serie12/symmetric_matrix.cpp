@@ -65,7 +65,6 @@ double SymmetricMatrix::get(int i, int j) const {
         return get(j, i);
     }
 
-    // return coeff[i + j * n - (((j+1)*(j+1)) - ((j+1)*(j+2)/2))];
     return coeff[i + j*n - ((j*(j+1))/2)];
 }
 
