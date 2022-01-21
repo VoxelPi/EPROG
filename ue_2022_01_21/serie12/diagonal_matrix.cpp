@@ -67,7 +67,7 @@ double DiagonalMatrix::get(int i, int j) const {
 }
 
 void DiagonalMatrix::set(int i, int j, double value) {
-    assert(i == j);
+    assert(i == j || value == 0);
     assert(i >= 0 && i < n);
 
     coeff[i] = value;

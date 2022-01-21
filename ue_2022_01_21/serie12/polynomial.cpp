@@ -197,7 +197,12 @@ bool operator==(const Polynomial& lhs, const Polynomial& rhs) {
     }
 
     for (int i = 0; i <= lhs.degree(); ++i) {
-        if (fabs(lhs.getCoeff(i) - rhs.getCoeff(i)) > TOLERANCE) {
+        double a = fabs(lhs.getCoeff(i));
+        if (TOLERANCE > a) {
+            a = TOLERANCE;
+        }
+
+        if (fabs(lhs.getCoeff(i) - rhs.getCoeff(i)) / a > TOLERANCE) {
             return false;
         }
     }
